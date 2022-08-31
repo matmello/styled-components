@@ -1,12 +1,18 @@
 // @flow
 
-import { useRef } from 'react';
+// import { useRef } from 'react';
 
-const invalidHookCallRe = /invalid hook call/i;
-const seen = new Set();
+// const invalidHookCallRe = /invalid hook call/i;
+// const seen = new Set();
 
 export const checkDynamicCreation = (displayName: string, componentId?: string) => {
-  if (process.env.NODE_ENV !== 'production') {
+
+  /* Disabling this function execution
+   The dynamic creation check in development is breaking
+   The content script injection in firefox */
+
+  // eslint-disable-next-line no-constant-condition
+  if (false && process.env.NODE_ENV !== 'production') {
     const parsedIdString = componentId ? ` with the id of "${componentId}"` : '';
     const message =
       `The component ${displayName}${parsedIdString} has been created dynamically.\n` +
